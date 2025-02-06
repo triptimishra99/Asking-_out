@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .question {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        #yes {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #no {
+            font-size: 18px;
+            padding: 8px 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #image {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="question">Will you be my Valentine? ❤️</h1>
+        <img id="image" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTB2cmZuM3lkNzlsdGZubXhyejJ1aTA4M3R4enc3cHNwZjV6bGc5ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ifB1v1W3Db0GIW7uTA/giphy.gif" alt="Cute Asking Image">
+        <div class="buttons">
+            <button id="yes" onclick="yesClicked()">Yes</button>
+            <button id="no" onclick="noClicked()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let noTexts = [
+            "Are you sure? 😢",
+            "Please reconsider! 🥺",
+            "Think about it again... 😭",
+            "You're breaking my heart! 💔",
+            "Okay... but really? 😿",
+            "Last chance! 😖",
+            "Alright, I'm not crying... 😭😭😭"
+        ];
+        let noIndex = 0;
+        let yesSize = 20;
+        let noSize = 18;
+
+        function noClicked() {
+            let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
+            
+            if (noIndex < noTexts.length) {
+                noButton.innerText = noTexts[noIndex];
+                noIndex++;
+            } else {
+                noButton.innerText = "You can't escape! 😂";
+            }
+
+            yesSize += 5;
+            noSize -= 2;
+            yesButton.style.fontSize = yesSize + "px";
+            noButton.style.fontSize = noSize + "px";
+            noButton.style.padding = (noSize - 10) + "px";
+        }
+
+        function yesClicked() {
+            document.body.innerHTML = `
+                <div class='container'>
+                    <h1>Yay! I knew you'd say Yes! ❤️🎉</h1>
+                    <img id='image' src='https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzJ2cHd2aTBvbzdkNXR4eDZhcDFqbXluOWlyZHhrMHFtOTRhemp4eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w9p4mjWUIPUhYoSKfH/giphy.gif' alt='Happy Couple Image'>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
